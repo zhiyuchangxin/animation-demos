@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>滚动捕捉仿轮播效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    p {
+      padding: 10px 10px 0;
+      color: #999;
+    }
+    .scroll-big-wrap {
+      overflow-x: auto;
+      width: 100%;
+      white-space: nowrap;
+      scroll-snap-type: x mandatory; /* 设置的是mandatory，强制定位 */
+    }
+    .scroll-big-wrap::-webkit-scrollbar {
+      display: none;
+    }
+    .scroll-big-wrap > li {
+      display: inline-block;
+      width: 100%;
+      height: 200px;
+      line-height: 200px;
+      font-size: 50px;
+      color: #fff;
+      text-align: center;
+      scroll-snap-align: start;
+    }
+    .scroll-big-wrap > li:nth-child(odd) {
+      background: rgb(245, 156, 178);
+    }
+    .scroll-big-wrap > li:nth-child(even) {
+      background: rgb(165, 226, 245);
+    }
+  </style>
+</head>
+<body>
+  <ul class="scroll-big-wrap">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <p>tip1: 需要设置 white-space: nowrap</p>
+  <p>tip2: scroll-snap-type: x/y</p>
+  <p>tip3: scroll-snap-type 需 mandatory 强制定位 </p>
+  <p>tip4: scroll-snap-align 设置位置 </p>
+</body>
+</html>

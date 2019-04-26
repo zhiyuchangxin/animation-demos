@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      position: relative;
+      margin: 30px auto;
+      width: 500px;
+      height: 500px;
+      background: #f1f1f1;
+      text-align: center;
+    }
+    .button {
+      display: inline-block;
+      margin: 50px;
+      padding: 5px 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #eee;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      height: 40px;
+      line-height: 40px;
+      margin: auto;
+      border: 1px solid #f00;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span class="button">点我</span>
+  </div>
+
+  <script>
+    const button = document.querySelector('.button');
+    button.onclick = () => {
+      let panel = document.querySelector('.panel');
+      if (!panel) {
+        panel = document.createElement('div');
+        const parent = button.parentNode;
+        panel.classList.add('panel');
+        panel.textContent = 'Hello!';
+        parent.appendChild(panel);
+
+        // panel.style.transform = 'scale(0)';
+        // panel.style.transition = 'transform .5s';
+        // panel.style.transform = 'scale(1)';
+
+        // 解决方案1： setTimeout
+        // panel.style.transform = 'scale(0)';
+        // panel.style.transition = 'transform .5s';
+        // setTimeout(() => {
+        //   panel.style.transform = 'scale(1)';
+        // }, 100)
+
+        // 解决方案2： use 2 rAF()
+        // panel.style.transform = 'scale(0)';
+        // panel.style.transition = 'transform .5s';
+        // requestAnimationFrame(() => {
+        //   requestAnimationFrame(() => {
+        //     panel.style.transform = 'scale(1)';
+        //   })
+        // })
+
+        // 解决方案3：use getComputedStyle
+        panel.style.transform = 'scale(0)';
+        getComputedStyle(panel).transform;
+        panel.style.transition = 'transform .5s';
+        panel.style.transform = 'scale(1)';
+
+      } else {
+        panel.style.transform = 'scale(0)';
+
+        // setTimeout(() => {
+        //   panel.remove();
+        // }, 600)
+
+        panel.addEventListener('transitionend', () => {
+          console.log('transitionend')
+          panel.remove();
+        })
+
+        // panel.addEventListener('transitioncancel', () => {
+        //   console.log('transitioncancel')
+        //   panel.remove();
+        // })
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>velocity</title>
+  <style>
+    #test {
+      width: 300px;
+      height: 180px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="test"></div>
+  <button id="run">点击执行动画</button>
+  <script>
+    window.addEventListener('load', () => {
+      const targetDom = document.querySelector('#test')
+      const btn = document.querySelector('#run')
+      btn.addEventListener('click', () => {
+        Animation(targetDom, {
+          opacity: .5,
+          width: '200px'
+        })
+      })
+    })
+  </script>
+  <script src="./velocity-init.js"></script>
+</body>
+</html>

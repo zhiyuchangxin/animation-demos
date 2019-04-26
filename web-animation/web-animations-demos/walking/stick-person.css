@@ -1,0 +1,71 @@
+:host {
+  background-color: black;
+  position: absolute;
+  visibility: hidden;
+}
+#bruce {
+  bottom: inherit;
+  left: inherit;
+  right: inherit;
+  top: inherit;
+  visibility: hidden;
+}
+div {
+  background: inherit;
+}
+#bruce div {
+  position: absolute;
+}
+#head {
+  border-radius: 50%;
+  height: 15%;
+  /* The margin-left properties move the body parts left to the extent
+  of half of their width, making the overall css "left" property correspond
+  to the center of the stick-person rather than the left of the head */
+  margin-left: -625%;
+  visibility: visible;
+  width: 1250%;
+}
+#body {
+  height: 85%;
+  min-width: 1px;
+  top: 15%;
+  width: 100%;
+}
+#body div {
+  -webkit-transform-origin: top;
+  width: 100%;
+}
+#body > div {
+  margin-left: -50%;
+  visibility: visible;
+}
+#torso {
+  height: 48%;
+}
+.arm {
+  height: 24%;
+  top: 9%;
+}
+.forearm {
+  height: 107%;
+  top: 100%;
+}
+.leg {
+  height: 26%;
+  top: 48%;
+}
+.shin {
+  height: 100%;
+  top: 100%;
+}
+.foot {
+  height: 33%;
+  top: 100%;
+}
+.joint {
+  border-radius: 50%;
+  height: 5%;
+  margin-top: -50%;
+  top: 100%;
+}

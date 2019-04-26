@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>倒计时</title>
+  <style>
+    .count {
+      width: 420px;
+      height: 420px;
+      background: url('./img/count.png') no-repeat;
+      background-size: cover;
+      /* animation: count 4s infinite; */
+      animation: count 4s infinite step-start;
+      transform: scale(.6);
+    }
+    @keyframes count {
+      25% {
+        background-position: 0 0;
+      }
+      50% {
+        background-position: -420px 0;
+      }
+      75% {
+        background-position: -840px 0;
+      }
+      100% {
+        background-position: -1260px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="count"></div>
+</body>
+</html>

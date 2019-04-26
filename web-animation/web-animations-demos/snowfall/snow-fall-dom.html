@@ -1,0 +1,110 @@
+<!--
+Copyright 2013 Google Inc. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+
+limitations under the License.
+-->
+
+<!DOCTYPE html>
+
+<script src="../components/webcomponentsjs/webcomponents.js"></script>
+<script src="../legacy-polyfill-loader.js"></script>
+<link rel="import" href="../components/polymer/polymer.html">
+
+<style>
+body {
+  overflow: hidden;
+  margin: 0;
+}
+</style>
+
+<polymer-element name="snow-fall-dom" attributes="count">
+  <template>
+    <style>
+      :host {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+      }
+      #snow {
+        background: #555555;
+        height: 100vh;
+      }
+      .snowflake {
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-radius: 8px;
+        position: absolute;
+      }
+    </style>
+    <div id="snow"></div>
+  </template>
+  <script>
+    'use strict';
+    Polymer('snow-fall-dom', {
+      snowflakes: [],
+      count: 300,
+      countChanged: function() {
+    console.log('hi');
+        var width = this.clientWidth;
+        var height = this.clientHeight;
+        if (!this.player)
+            return;
+        // FIXME: This works around a performance issue in the polyfill which
+        // makes it expensive to add/remove animations while they are attached
+        // to a player.
+        this.player.source = null;
+        while (this.snowflakes.length > this.count) {
+            var snowflake = this.snowflakes.pop();
+            snowflake.remove();
+            snowflake.animation.remove();
+        }
+        while (this.snowflakes.length < this.count) {
+                                        console.log('add');
+            var snowflake = document.createElement('div');
+            this.snowflakes.push(snowflake);
+            snowflake.classList.add('snowflake');
+            this.$.snow.appendChild(snowflake);
+
+            var scale = 0.35 + Math.random() * 0.65;
+            snowflake.style.opacity = scale;
+            var fromX = Math.random() * width;
+            var toX = fromX + Math.random() * (0.3 * width) - (0.15 * width);
+            this.group.append(snowflake.animation = new Animation(snowflake, [
+              {transform: 'translate3d(' + fromX + 'px, 0px, 0) scale(' + scale + ')'},
+              {transform: 'translate3d(' + toX + 'px, ' + height + 'px, 0) scale(' + scale + ')'}
+            ], {
+              iterationStart: Math.random(),
+              iterations: Infinity,
+              playbackRate: 2 - Math.random() * 1.2,
+              duration: 5000
+            }));
+        }
+        this.player.source = this.group;
+      },
+      enteredView: function() {
+        this.player = document.timeline.play(this.group = new AnimationGroup());
+        this.countChanged();
+      },
+      leftView: function() {
+        if (!this.player)
+            return;
+        this.player.source = null;
+        this.player = null;
+      },
+    });
+  </script>
+</polymer-element>
+
+<snow-fall-dom></snow-fall-dom>

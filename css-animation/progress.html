@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Progress-go</title>
+  <style>
+    :root {
+      --w: 600px;
+      --h: 15px;
+      --solid: calc(var(--h) / 3 * 2);
+      --void: calc(var(--h) / 3 * 1);
+      --ratio: .9;
+    }
+    .progress-go {
+      position: relative;
+      width: calc(var(--w) * var(--ratio));
+      height: calc(1.414 * var(--h));
+      animation: going 5s;
+    }
+    .progress-go::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: var(--w);
+      height: calc(1.414 * var(--h));
+      background: linear-gradient(rgba(0, 0, 0, .5), hsla(0, 0%, 100%, .5), rgba(0, 0, 0, .5));
+    }
+    .progress {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(-45deg, teal 0, teal var(--void), transparent var(--void), transparent var(--solid), teal var(--solid), teal var(--h));
+      background-position: 0 0;
+      background-clip: content-box;
+      animation: scroll 1s infinite linear;
+    }
+
+    @keyframes scroll {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 0 calc(-1 * 1.414 * var(--h));
+      }
+    }
+    @keyframes going {
+      from {
+        width: 0;
+      }
+      to {
+        width: calc(var(--w) * var(--ratio));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-go">
+    <div class="progress"></div>
+  </div>
+  <br>
+</body>
+</html>

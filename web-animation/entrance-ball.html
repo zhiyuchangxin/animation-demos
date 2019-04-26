@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>web-animation 入场小球</title>
+  <style>
+    .box {
+      margin: 0 auto;
+      padding: 5px;
+      width: 600px;
+      height: 600px;
+      background: #eee;
+      box-sizing: border-box;
+    }
+    .ball {
+      width: 200px;
+      height: 200px;
+      background-color: black;
+      margin: auto;
+      margin-top: 20vh;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="ball"></div>
+  </div>
+  <script>
+    const ball = document.querySelector('.ball')
+    const keyframes = [
+      {
+        transform: 'translateY(-1000px) scale(.2, 2.5)',
+        transformOrigin: '50% 0',
+        filter: 'blur(40px)',
+        opacity: 0
+      },
+      {
+        transform: 'translateY(0) scale(1, 1)',
+        transformOrigin: '50% 50%',
+        filter: 'blur(0)',
+        opacity: 1
+      }
+    ]
+    const options = {
+      iterations: Infinity,  // 1. animation-iteration-count: infinite 2. Infinity 非字符串而是关键字
+      iterationStart: 0,
+      delay: 0,
+      endDelay: 0,
+      direction: 'alternate',
+      duration: 700,
+      fill: 'forwards',
+      easing: 'ease-out' // animation-timing-function
+    }
+    ball.animate(keyframes, options)
+  </script>
+</body>
+</html>

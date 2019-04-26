@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>实现镂空的几种方案</title>
+  <style>
+    .clip-shape-box {
+      overflow: hidden;
+      position: relative;
+      width: 300px;
+      height: 250px;
+    }
+    .clip-shape-mask {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      margin: auto;
+      width: 80px;
+      height: 80px;
+      outline: 999px solid rgba(0, 0, 0, .5);
+    }
+    .clip-shape-mask2 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border: 999px solid rgba(0, 0, 0, .5);
+      border-radius: 50%;
+    }
+    .clip-shape-mask3 {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      margin: auto;
+      width: 80px;
+      height: 80px;
+      box-shadow: 0 0 0 999px rgba(0, 0, 0, .5);
+      border-radius: 50%;
+    }
+
+    .clip-shape-mask4 {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background-color: rgba(0, 0, 0, .5);
+      -webkit-mask: no-repeat center;
+      -webkit-mask-image: linear-gradient(black, black), url(./imgs/star.svg);
+      -webkit-mask-size: 100% 100%, 80px 80px;
+      -webkit-mask-composite: exclude; /* firefox */
+      -webkit-mask-composite: source-out; /* chrome */
+      transition: all .3s;
+    }
+    .clip-shape-mask4:hover {
+      -webkit-mask-size: 100% 100%, 300% 300%;
+    }
+
+    .clip-shape-box > img {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* other */
+    .quar-radius {
+      width: 96px;
+      height: 96px;
+      border-radius: 0 0 50% 0;
+      box-shadow: 0 0 0 100px teal;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .test-mask {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background-color: rgba(0, 0, 0, .5);
+      -webkit-mask: no-repeat center;
+      -webkit-mask-image: linear-gradient(black, black), url(./imgs/star.svg);
+      -webkit-mask-size: cover, 80px 80px;
+      -webkit-mask-composite: exclude; /* firefox: 后面遮罩图片重合的地方排除，当作透明处理 */
+      -webkit-mask-composite: source-out; /* chrome: 后面遮罩图片重合的地方排除，当作透明处理 */
+    }
+  </style>
+</head>
+<body>
+  <p>镂空1: outline「无法实现圆角」</p>
+  <div class="clip-shape-box">
+    <div class="clip-shape-mask"></div>
+    <img src="http://cdn.zhiyuchangxin.cn/doraemon.png">
+  </div>
+  <br>
+
+  <p>镂空2: border「可实现圆角」</p>
+  <div class="clip-shape-box">
+    <div class="clip-shape-mask2"></div>
+    <img src="http://cdn.zhiyuchangxin.cn/doraemon.png">
+  </div>
+  <br>
+
+  <p>镂空3：box-shadow「可实现圆角」</p>
+  <div class="clip-shape-box">
+    <div class="clip-shape-mask3"></div>
+    <img src="http://cdn.zhiyuchangxin.cn/doraemon.png">
+  </div>
+  <br>
+
+  <p>box-shadow: after</p>
+  <div class="quar-radius"></div>
+  <br>
+
+  <p>mask: before</p>
+  <div class="clip-shape-box">
+    <div class="test-mask"></div>
+  </div>
+  <br>
+
+  <p>镂空4：mask「可实现不规则图形」 + hover 动效</p>
+  <div class="clip-shape-box">
+    <div class="clip-shape-mask4"></div>
+    <img src="http://cdn.zhiyuchangxin.cn/doraemon.png">
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</body>
+</html>

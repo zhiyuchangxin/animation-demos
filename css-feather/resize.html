@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>resize</title>
+  <style>
+    .box {
+      overflow: hidden;
+      border: 1px solid #f00;
+    }
+    .box-l {
+      position: relative;
+      float: left;
+      height: 400px;
+      background: #fff;
+    }
+    /* 真实滚动区域（右下角一点） */
+    .resize-bar {
+      overflow: scroll;
+      width: 200px;
+      height: 100%;
+      resize: horizontal;
+      opacity: 0;
+      cursor: ew-resize;
+    }
+    /* 真实滚动区域扩大 */
+    .resize-bar::-webkit-scrollbar {
+      width: 200px;
+      height: 100%;
+    }
+    /* 视觉滚动区域 */
+    .resize-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      border-right: 2px solid #eee;
+      border-left: 1px solid #f00;
+    }
+    .resize-bar:hover ~ .resize-line {
+      border-left: 1px dashed #f00;
+    }
+    /* 左侧文本内容 */
+    .resize-text {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 5px;
+      padding: 20px;
+    }
+
+    .box-r {
+      overflow: hidden;
+      padding: 20px;
+      height: 400px;
+      background: #eee;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="box-l">
+      <div class="resize-bar"></div>
+      <div class="resize-line"></div>
+      <div class="resize-text">今夕何夕兮，搴舟中流，今日何日兮，得与王子同舟！今夕何夕兮，搴舟中流，今日何日兮，得与王子同舟！今夕何夕兮，搴舟中流，今日何日兮，得与王子同舟！今夕何夕兮，搴舟中流，今日何日兮，得与王子同舟！</div>
+    </div>
+    <div class="box-r">人生若只如初见，何事秋风悲画扇。人生若只如初见，何事秋风悲画扇。</div>
+  </div>
+</body>
+</html>

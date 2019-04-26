@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>入场小球</title>
+  <style>
+    .box {
+      margin: 0 auto;
+      padding: 5px;
+      width: 600px;
+      height: 600px;
+      background: #eee;
+      box-sizing: border-box;
+    }
+    .ball {
+      width: 200px;
+      height: 200px;
+      background-color: black;
+      margin: auto;
+      margin-top: 20vh;
+      border-radius: 50%;
+      animation: comingin .7s infinite alternate ease-out;
+    }
+    @keyframes comingin {
+      0% {
+        transform: translateY(-1000px) scale(.2, 2.5);
+        transform-origin: 50% 0;
+        filter: blur(40px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0) scale(1, 1);
+        transform-origin: 50% 50%;
+        filter: blur(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="ball"></div>
+  </div>
+</body>
+</html>

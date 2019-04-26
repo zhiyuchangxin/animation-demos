@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>loading dot</title>
+  <style>
+    .dot {
+      position: relative;
+      font-size: 28px;
+      color: teal;
+    }
+    .dot:after {
+      content: '...';
+      position: absolute;
+      animation: dotting 3s infinite step-start;
+    }
+    @keyframes dotting {
+      33.3% {
+        content: '.'
+      }
+      66.6% {
+        content: '..'
+      }
+    }
+
+    .dot2 {
+      position: relative;
+      overflow: hidden;
+      line-height: 1;
+      font-size: 28px;
+      color: blue;
+    }
+    .dot2::after {
+      content: '...\A..\A.'; /* \A 是LF换行符， \D 是CR回车符*/
+      position: absolute;
+      white-space: pre-wrap;
+      animation: dotting2 3s infinite step-start;
+    }
+    @keyframes dotting2 {
+      33.3% {
+        transform: translateY(-2em);
+      }
+      66.6% {
+        transform: translateY(-1em);
+      }
+    }
+  </style>
+</head>
+<body>
+  <p>实现1：content 动画「不能兼容 IE & safri」</p>
+  <div class="dot">加载中</div>
+  <br>
+
+  <p>实现2：transform 垂直动画「兼容」</p>
+  <div class="dot2">加载中</div>
+</body>
+</html>

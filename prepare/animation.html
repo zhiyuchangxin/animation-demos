@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>animation</title>
+  <style>
+    .box {
+      position: relative;
+      margin: 30px auto;
+      width: 500px;
+      height: 500px;
+      background: #f1f1f1;
+      text-align: center;
+    }
+    .button {
+      display: inline-block;
+      margin: 50px;
+      padding: 5px 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #eee;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      height: 40px;
+      line-height: 40px;
+      margin: auto;
+      border: 1px solid #f00;
+    }
+
+    @keyframes stretch {
+      from {
+        transform: scale(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span class="button">点我</span>
+  </div>
+  <script>
+    const button = document.querySelector('.button');
+    button.onclick = () => {
+      const panel = document.createElement('div');
+      const parent = button.parentNode;
+      panel.classList.add('panel');
+      panel.textContent = 'Hello!';
+      parent.appendChild(panel);
+
+      panel.style.animation = 'stretch .5s'
+    }
+  </script>
+</body>
+</html>

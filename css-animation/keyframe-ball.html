@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>animation 关键帧</title>
+  <style>
+    .ball {
+      margin: 100px auto;
+      width: 60px;
+      height: 60px;
+      background: #f00;
+      border-radius: 50%;
+      animation: fade-out 3s infinite cubic-bezier(.7, 0, 1, 1);
+    }
+    @keyframes fade-out {
+      0% { transform: scale(1); opacity: 1; }
+      /* 50% { transform: scale(1.5); opacity: .5; } */
+      100% { transform: scale(2); opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+  <div class="ball"></div>
+</body>
+</html>

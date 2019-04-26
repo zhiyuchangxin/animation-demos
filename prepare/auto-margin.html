@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自动 margin</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .mask {
+      /* display: flex; */
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, .6);
+    }
+    .popup {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      
+      margin: auto;
+      width: 200px;
+      height: 250px;
+      padding: 10px;
+      box-sizing: border-box;
+      text-align: center;
+      background: #fff;
+      border-radius: 5px;
+    }
+    p {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="mask">
+    <div class="popup">
+      <p>重点：margin: auto 是为了填充空闲尺寸而设计的</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两个小球撞击</title>
+  <!-- <script src="https://rawgit.com/web-animations/web-animations-js/master/web-animations.min.js"></script> -->
+  <style>
+    .box {
+      overflow: hidden;
+      width: 600px;
+      height: 600px;
+      background: #eee;
+    }
+    .ball {
+      display: inline-block;
+      margin-right: -6px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    .ball-yellow {
+      background: gold;
+    }
+    .ball-red {
+      background: #f06;
+      transform: translateX(100px);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="ball ball-yellow"></div>
+    <div class="ball ball-red"></div>
+  </div>
+  <script>
+    const player = document.body.animate(
+      // [{'background': 'red'}, {'background': 'green'}, {'background': 'blue'}]
+      [] , 500)
+
+    const yellowBall = document.querySelector('.ball-yellow')
+    const redBall = document.querySelector('.ball-red')
+
+    const yellowBallFrames = [
+      { transform: 'none' },
+      { transform: 'translateX(100px)'}
+    ]
+    const yellowBallTime = {
+      delay: 100,
+      duration: 300,
+      endDelay: 100,
+      fill: 'forwards',
+      easing: 'ease-in'
+    }
+
+    const redBallFrames = [
+      { transform: 'translateX(100px)' },
+      { transform: 'translateX(200px)'}
+    ]
+    const redBallTime = {
+      duration: 150,
+      fill: 'forwards',
+      easing: 'ease-out'
+    }
+
+    // firefox 正常，chrome finished 时间有问题
+    const yellowBallAnimate = yellowBall.animate(yellowBallFrames, yellowBallTime)
+    yellowBallAnimate.finished.then(() => {
+      redBall.animate(redBallFrames, redBallTime)
+    })
+    // chrome 里存在 getAnimations 方法
+    console.log(yellowBallAnimate)
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>color-flow</title>
+  <style>
+    .clor-flow {
+      width: 500px;
+      height: 150px;
+      background: linear-gradient(to right,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        purple
+      );
+      animation: hue 6s infinite linear;
+    }
+
+    .text-color-flow {
+      font-size: 60px;
+      font-weight: 900;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      /* -webkit-text-stroke: 1px #f00; */
+      background-image: linear-gradient(to right,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        purple
+      );
+      animation: hue 6s infinite linear;
+    }
+
+    @keyframes hue {
+      from {
+        filter: hue-rotate(0); /* 色相变化->模拟流动 */
+      }
+      to {
+        filter: hue-rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <p>色彩流动原理</p>
+  <div class="clor-flow"></div>
+  <br>
+
+  <p>文字颜色动效</p>
+  <p class="text-color-flow">第五届 CSS 大会</p>
+</body>
+</html>

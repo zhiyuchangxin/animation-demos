@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>sticky 滚动吸顶</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    dt {
+      position: -webkit-sticky;
+      position: sticky;
+      top: -1px;
+      margin: 0;
+      padding: 8px 0 8px 12px;
+      border-bottom: 1px solid rgb(142, 148, 153);
+      border-top: 1px solid rgb(142, 148, 153);
+      background: rgb(169, 173, 175);
+      color: #fff;
+      font-size: 18px;
+    }
+    dd {
+      margin: 0;
+      padding: 8px 0 8px 12px;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+    dd + dd {
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p>直接拿 MDN 上的 DEMO</p>
+    <dl>
+      <dt>A</dt>
+      <dd>Andrew W.K.</dd>
+      <dd>Apparat</dd>
+      <dd>Arcade Fire</dd>
+      <dd>At The Drive-In</dd>
+      <dd>Aziz Ansari</dd>
+      <dd>Aziz Ansari</dd>
+      <dd>Aziz Ansari</dd>
+      <dd>Aziz Ansari</dd>
+      <dd>Aziz Ansari</dd>
+    </dl>
+    <dl>
+      <dt>C</dt>
+      <dd>Chromeo</dd>
+      <dd>Common</dd>
+      <dd>Converge</dd>
+      <dd>Crystal Castles</dd>
+      <dd>Cursive</dd>
+      <dd>Cursive</dd>
+      <dd>Cursive</dd>
+      <dd>Cursive</dd>
+      <dd>Cursive</dd>
+    </dl>
+    <dl>
+      <dt>E</dt>
+      <dd>Explosions In The Sky</dd>
+      <dd>Explosions In The Sky</dd>
+    </dl>
+    <dl>
+      <dt>T</dt>
+      <dd>Ted Leo & The Pharmacists</dd>
+      <dd>T-Pain</dd>
+      <dd>Thrice</dd>
+      <dd>TV On The Radio</dd>
+      <dd>TV On The Radio</dd>
+      <dd>TV On The Radio</dd>
+      <dd>TV On The Radio</dd>
+      <dd>Two Gallants</dd>
+    </dl>
+  </div>
+</body>
+</html>

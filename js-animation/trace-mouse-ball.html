@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>跟随鼠标移动球</title>
+  <style>
+    .ball {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      background: #f00;
+      border-radius: 50%;
+      transition: all 1s;
+    }
+  </style>
+</head>
+<body>
+  <p>跟随鼠标移动小球</p>
+  <div class="ball"></div>
+  <script>
+    window.addEventListener('load', () => {
+      const ball = document.querySelector('.ball')
+      document.addEventListener('click', (ev) => {
+        ball.style.left = ev.clientX - 25 + 'px'
+        ball.style.top = ev.clientY - 25 + 'px'
+      })
+    })
+  </script>
+</body>
+</html>
